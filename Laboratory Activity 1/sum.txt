@@ -1,1 +1,0 @@
-The total sum of data in (data.txt) is: 181
