@@ -26,8 +26,8 @@ public class Number4 {
 
             } System.out.println("Total count of words in given file: " + wCount);
             
-            File File = new File(inputFileName);
-            FileWriter fw = new FileWriter(File, true);
+            File file = new File(inputFileName);
+            FileWriter fw = new FileWriter(file, true);
 
             fw.write("Total count of words in given file: " + wCount);
             fw.flush();
