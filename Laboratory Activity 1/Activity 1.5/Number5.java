@@ -1,49 +1,47 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Number5 {
-    public static void main(String[] args) {
-        System.out.println("Laboratory Activity 1.5\n");
+public class App5 {
 
+    public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
-
-        System.out.print("Input file name (INPUT): ");
+        
+        System.out.print("Enter file name (INPUT): ");
         String inputFileName = sc.nextLine();
+        
+        System.out.print("Enter file name (OUTPUT): ");
+        String outputFileName = sc.nextLine();
 
         File inputFile = new File(inputFileName);
+        Scanner input = new Scanner(inputFile);
+        
+        FileWriter outputFile = new FileWriter(outputFileName);
+        PrintWriter pw = new PrintWriter(outputFile);
+
+        ArrayList<String> rev = new ArrayList<String>();
 
         try {
-            Scanner reader = new Scanner(inputFile).useDelimiter("\r\n");
-
-            System.out.print("Input file name (OUTPUT): ");
-            String outputFileName = sc.nextLine();
-
-            try {
-                FileWriter fw = new FileWriter(outputFileName);
-                
-                while (reader.hasNext()){
-                    String[] words = reader.next().split("\s");
-                    for (String word : words){
-                        char[] letters = word.toCharArray();
-                        for (int i = letters.length - 1; i >= 0; i--){
-                            fw.write(letters[i]);
-                        }
-                        fw.write(" ");
-                    }
-                    if (reader.hasNext())
-                        fw.write("\n");
-                }
-
-                fw.close();
-            } catch (IOException e){
-                e.printStackTrace();
+            while(input.hasNextLine()){
+                rev.add(input.nextLine());
             }
+            
+                for (int i = (rev.size()-1); i >= 0; i--){
+                    String words[] = rev.get(i).split(" ");
+                
+                    for (int e = (words.length-1); e >= 0; e--){
+                        pw.print(words[e] + " ");
+                    }
+                    pw.println(" ");
+                    words = null;
+                }
+        } catch (Exception e) {
+            System.out.println("An error has occured" + e.getMessage());
 
-            reader.close();
-        } catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-
-        sc.close();
+        } finally {
+            sc.close();
+            input.close();
+            pw.close();
+        }            
     }
 }
