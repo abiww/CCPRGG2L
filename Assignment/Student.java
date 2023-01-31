@@ -1,13 +1,13 @@
 public class Student {
     //Attributes
     static String SchoolName = "National University - Manila";
-    String Name, Name3;
-    String Nickname, Nickname3;
-    int Age, Age3;
-    String StudentNumber, StudentNumber3;
-    String Course, Course3;
-    int YearLevel, YearLevel3;
-    String Sex, Sex3;
+    String Name;
+    String Nickname;
+    int Age;
+    String StudentNumber;
+    String Course;
+    int YearLevel;
+    String Sex;
 
     //No-args constructor
     public Student() {
